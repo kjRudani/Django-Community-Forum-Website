@@ -21,8 +21,8 @@
                     <div class="username"><a href="">{{post.user.fullname|title}}</a></div>
                     <div>Role</div>
                     <img src="{{post.user.profile_pic.url}}" alt="">
-                    <div>Posts: <u>{{post.user.num_posts}}</u></div>
-                    <div>Points: <u>{{post.user.points}}</u></div>
+                    <div style="color: white">Posts: <u>{{post.user.num_posts}}</u></div>
+                    <div style="color: white">Points: <u>{{post.user.points}}</u></div>
                 </div>
                 <div class="content">
                     {{post.content|safe}}
@@ -67,7 +67,7 @@
                     <div>Points: <u>{{comment.user.points}}</u></div>
                 </div>
                 <div class="content">
-                    {{comment.content}}
+                    <p style='color=white'>{{comment.content}}</p>
                     <br>
                     {% if request.user.is_authenticted %}
                     <div class="comment">
