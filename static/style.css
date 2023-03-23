@@ -43,6 +43,10 @@ h1{
     margin:4px;
 }
 
+.subforum-title h1{
+    color: white;
+}
+
 .subforum-row{
     display: grid;
     grid-template-columns: 7% 60% 13% 20%;
@@ -53,6 +57,7 @@ h1{
     margin:4px;
     border-radius: 5px;
     background-color:#111314;
+    color: white;
 }
 
 .subforum-description *{
@@ -262,6 +267,7 @@ header{
 .forum-info{
     padding: 20px;
     background-color: #111314;
+    color: white;
 }
 
 .chart{
@@ -283,6 +289,10 @@ footer{
 /* ########################################### */
 
 /* posts table's head  */
+.posts-table{
+    color:white;
+}
+
 .table-head{
     display: flex;
 }
