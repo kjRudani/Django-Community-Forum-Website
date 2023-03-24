@@ -19,7 +19,7 @@
             <div class="body">
                 <div class="authors">
                     <div class="username"><a href="">{{post.user.fullname|title}}</a></div>
-                    <div>Role</div>
+                    <div style="color: white">Role</div>
                     <img src="{{post.user.profile_pic.url}}" alt="">
                     <div style="color: white">Posts: <u>{{post.user.num_posts}}</u></div>
                     <div style="color: white">Points: <u>{{post.user.points}}</u></div>
@@ -61,10 +61,10 @@
             <div class="body">
                 <div class="authors">
                     <div class="username"><a href="">{{comment.user.fullname|title}}</a></div>
-                    <div>Role</div>
+                    <div style="color: white">Role</div>
                     <img src="{{comment.user.profile_pic.url}}" alt="">
-                    <div>Posts: <u>{{comment.user.num_posts}}</u></div>
-                    <div>Points: <u>{{comment.user.points}}</u></div>
+                    <div style="color: white">Posts: <u>{{comment.user.num_posts}}</u></div>
+                    <div style="color: white">Points: <u>{{comment.user.points}}</u></div>
                 </div>
                 <div class="content">
                     <p style='color=white'>{{comment.content}}</p>
@@ -93,7 +93,7 @@
             <div class="body">
                 <div class="authors">
                     <div class="username"><a href="">{{reply.user.fullname|title}}</a></div>
-                    <div>Role</div>
+                    <div style="color: white">Role</div>
                     <img src="{{reply.user.profile_pic.url}}" alt="">
                     <div>Posts: <u>{{reply.user.num_posts}}</u></div>
                     <div>Points: <u>{{reply.user.points}}</u></div>

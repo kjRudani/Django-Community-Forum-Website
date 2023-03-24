@@ -227,11 +227,15 @@ header{
   /* Search Box styles */
 .search-box{
     border: solid 1px #b7202e;
-    margin-top: 20px;
-    padding: 40px;
+    /* padding: 40px; */
     display:flex;
     justify-content: center;
     box-shadow:1px 2px 3px #b7202e;
+    width: 44%;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: -30px;
+
 }
 
 .search-box select{
@@ -420,11 +424,13 @@ footer{
 
 .content p{
     color: white;
+    font-size: 20px;
 }
 
 .body{
     display: flex;
     background-color: #131415;
+    border-radius: 10px;
     padding: 10px;
     margin-top: 5px;
 }
