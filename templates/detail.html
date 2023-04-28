@@ -16,14 +16,14 @@
                 <div class="content">Topic: {{post.title}} (Read {% get_hit_count for post %} Times)</div>
             </div>
 
-            <div class="body">
+            {% comment %} <div class="body">
                 <div class="authors">
                     <div class="username"><a href="">{{post.user.fullname|title}}</a></div>
-                    <div style="color: white">Role</div>
-                    <img src="{{post.user.profile_pic.url}}" alt="">
-                    <div style="color: white">Posts: <u>{{post.user.num_posts}}</u></div>
-                    <div style="color: white">Points: <u>{{post.user.points}}</u></div>
-                </div>
+                    {% comment %} <div style="color: white">Role</div> {% endcomment %}
+                    {% comment %} <img src="{{post.user.profile_pic.url}}" alt=""> {% endcomment %}
+                    {% comment %} <div style="color: white">Posts: <u>{{post.user.num_posts}}</u></div>
+                    <div style="color: white">Points: <u>{{post.user.points}}</u></div> {% endcomment %}
+                {% comment %}</div>
                 <div class="content">
                     {{post.content|safe}}
                     <br>
@@ -31,8 +31,28 @@
                         <button onclick="showComment()">Comment</button>
                     </div>
                 </div>
+            </div> {% endcomment %}
+        </div>
+        <div class="header-post-content">
+            <div class="post-header noselect">
+                <img src="{{post.user.profile_pic.url}}" alt="">
+                <a href="">{{post.user.fullname|title}}</a>
+                <div class="post-header-children">
+                </div>
+            </div>
+
+            <div class="post-body">
+                {{post.content|safe}}
+                <div style="padding: 10px;
+                font-weight: bolder;
+                box-shadow: 4px 6px #fff;
+                cursor: pointer;
+                float: right;">
+                <button onclick="showComment()">Comment</button>
             </div>
         </div>
+        </div>
+        
 
 
         <!--Comment Area-->
@@ -48,24 +68,30 @@
             </div>
         </form>
         {% else %}
-<div style="background-color:grey;color:#000;font-weight:bolder;padding:20px;width:100%;"> You need to <a href="{% url 'signin' %}"><b>login</b></a> to comment or reply.! </div>        
+<div style="background-color:grey;color:#000;font-weight:bolder;padding:20px;width:100%;margin-top:10px"> You need to <a href="{% url 'signin' %}"><b>login</b></a> to comment or reply.! </div>        
 
         {% endif %}
 
         {% endif %}
+
+
+
+        {% for comment in post.comments.all %}
+            
+        {% endfor %}
 
         <!--Comments Section-->
 
         {% for comment in post.comments.all %}
-        <div class="comments-container">
+        {% comment %} <div class="comments-container">
             <div class="body">
                 <div class="authors">
                     <div class="username"><a href="">{{comment.user.fullname|title}}</a></div>
-                    <div style="color: white">Role</div>
-                    <img src="{{comment.user.profile_pic.url}}" alt="">
-                    <div style="color: white">Posts: <u>{{comment.user.num_posts}}</u></div>
-                    <div style="color: white">Points: <u>{{comment.user.points}}</u></div>
-                </div>
+                    {% comment %} <div style="color: white">Role</div> {% endcomment %}
+                    {% comment %} <img src="{{comment.user.profile_pic.url}}" alt=""> {% endcomment %}
+                    {% comment %} <div style="color: white">Posts: <u>{{comment.user.num_posts}}</u></div>
+                    <div style="color: white">Points: <u>{{comment.user.points}}</u></div> {% endcomment %}
+                {% comment %}</div>
                 <div class="content">
                     <p style='color=white'>{{comment.content}}</p>
                     <br>
@@ -76,7 +102,68 @@
                     {% endif %}
                 </div>
             </div>
+        </div> {% endcomment %}
+
+        
+
+        <!--Reply Area-->
+        <form action="." method="post">
+            {% csrf_token %}
+            <div class="comment-area hide" id="comment{{comment.id}}">
+                <textarea name="reply" id="" placeholder="reply here ... "></textarea>
+                <input type="submit" value="submit" name="reply-form">
+                <input type="hidden" name="comment-id" value="{{comment.id}}">
+            </div>
+        </form>
+       
+        <!--Reply section-->
+        {% comment %} {% for reply in comment.replies.all %}
+        <div class="comments-container" style="width: 95%; margin-left:5%;">
+            <div class="body">
+                <div class="authors">
+                    <div class="username"><a href="">{{reply.user.fullname|title}}</a></div>
+                    {% comment %} <div style="color: white">Role</div> {% endcomment %}
+                    {% comment %}<img src="{{reply.user.profile_pic.url}}" alt="">
+                    <div>Posts: <u>{{reply.user.num_posts}}</u></div>
+                    <div>Points: <u>{{reply.user.points}}</u></div>
+                </div>
+				<div class="content">
+                    <p style='color=white'>{{comment.content}}</p>
+                    <br>
+                    {% if request.user.is_authenticted %}
+                    <div class="comment">
+                        <button onclick="showReplies('comment{{comment.id}}')">Reply</button>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
         </div>
+        {% endfor %} {% endcomment %}
+
+        
+
+        {% endfor %}
+
+		{% for comment in post.comments.all %}
+        <div class="header-post-content">
+            <div class="post-header noselect">
+                <img src="{{comment.user.profile_pic.url}}" alt=""> 
+                <a href="">{{comment.user.fullname|title}}</a>
+                <div class="post-header-children">
+                </div>
+            </div>
+
+            <div class="post-body">
+                <p>{{comment.content}}</p>
+                {% if request.user.is_authenticted %}
+                    <div class="comment">
+                        <button onclick="showReplies('comment{{comment.id}}')">Reply</button>
+                    </div>
+                    {% endif %}
+            </div>
+        </div>
+				
+        
         <!--Reply Area-->
         <form action="." method="post">
             {% csrf_token %}
@@ -93,7 +180,7 @@
             <div class="body">
                 <div class="authors">
                     <div class="username"><a href="">{{reply.user.fullname|title}}</a></div>
-                    <div style="color: white">Role</div>
+                    {% comment %} <div style="color: white">Role</div> {% endcomment %}
                     <img src="{{reply.user.profile_pic.url}}" alt="">
                     <div>Posts: <u>{{reply.user.num_posts}}</u></div>
                     <div>Points: <u>{{reply.user.points}}</u></div>
@@ -105,8 +192,10 @@
             </div>
         </div>
         {% endfor %}
-        {% endfor %}
 
+        
+
+        {% endfor %}
        
         
 

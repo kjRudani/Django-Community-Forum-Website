@@ -67,8 +67,9 @@
             <div style="font-size:50px;font-weight300px; margin-left:100px;"><a href="{% url 'create_post' %}">+</a></div>
             {% endif %}
         </div> {% endcomment %}
+
         <!--SearchBox Section-->
-                <form action="{% url 'search_result' %}" role="form" method="GET">
+                {% comment %} <form action="{% url 'search_result' %}" role="form" method="GET">
                 <div class="search-box">
                     <div>
                         <select name="search-box" id="">
@@ -80,7 +81,8 @@
                         <button type="submit" name="search"><i class="fa fa-search"></i></button>
                     </div>
                 </div>
-                </form>
+                </form> {% endcomment %}
+                
                 {% if user.is_authenticated %}
             <div style="font-size:20px;font-weight300px;margin-left:100px,margin-bottom:100px;"><a href="{% url 'create_post' %}">Create Post</a></div>
             {% endif %}
@@ -92,16 +94,18 @@
     {% endif %}
     {% block content %}
     {% endblock content %}
-    <div style="margin-bottom: 246px;"></div>
-    <footer style="
-    position: fixed;
-    left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-    ">
+    {% comment %} <div style="margin-bottom: 246px;"></div> {% endcomment %}
+    {% comment %} <footer>
         <span>&copy;  Roll No. 16, 18, 19 | All Rights Reserved</span>
-    </footer>
+        <div class="chart">
+            Stats &nbsp;<i class="fa fa-bar-chart"></i>
+        </div>
+        <span><u>{{num_posts}}</u> Posts in <u>{{num_categories}}</u> Categories by <u>{{num_users}}</u> Members.</span><br>
+        {% if forums %}
+            <span>Latest post: <b><a href="{{last_post.get_url}}">{{last_post.title}}</a></b> on {{last_post.date|date}} By <a href="">{{last_post.user.fullname|title}}</a></span>.<br>
+            <span>Check <a href="{% url 'latest_posts' %}">the latest posts</a> .</span><br>
+        {% endif %}
+    </footer> {% endcomment %}
     <script src="{% static 'main.js' %}"></script>
 </body>
 </html>

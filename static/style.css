@@ -24,12 +24,21 @@ h1{
 }
 
 
+
+.auth-form{
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    font-size: 20px;
+}
 /* ########################################### */
 /*           Forums.html                       */
 /* ########################################### */
 .container{
-    margin: 20px;
+    margin: 0 auto;
+    width: 1000px;
     padding: 20px;
+    
 }
 
 .subforum{
@@ -37,15 +46,15 @@ h1{
 }
 
 .subforum-title{
-    background-color:#292B2E;
+    background-color:#DADADC;
     padding: 5px;
     border-radius: 5px;
     margin:4px;
 }
 
-.subforum-title h1{
+/* .subforum-title h1{
     color: white;
-}
+} */
 
 .subforum-row{
     display: grid;
@@ -56,8 +65,8 @@ h1{
     padding: 10px;
     margin:4px;
     border-radius: 5px;
-    background-color:#111314;
-    color: white;
+    background-color:#EEEEEE;
+    color: black;
 }
 
 .subforum-description *{
@@ -231,7 +240,7 @@ header{
     display:flex;
     justify-content: center;
     box-shadow:1px 2px 3px #b7202e;
-    width: 44%;
+    width: 22%;
     margin: 0 auto;
     margin-top: 25px;
     margin-bottom: -30px;
@@ -283,19 +292,31 @@ header{
 footer{
     margin-top: 20px;
     padding: 20px;
-    background-color:  #b7202e;
+    background-color:  black;
+    color: white;
     display: block;
-    text-align: center;
+    /* text-align: center; */
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-width: 1160px;
+
 }
+
+/* footer {
+	border-top: 1px solid #313131;
+	background: #363636;
+	    box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+} */
 
 /* ########################################### */
 /*            posts.html                       */
 /* ########################################### */
 
 /* posts table's head  */
-.posts-table{
+/* .posts-table{
     color:white;
-}
+} */
 
 .table-head{
     display: flex;
@@ -304,7 +325,7 @@ footer{
 .table-head div{
     padding: 5px;
     margin: 2px;
-    background-color: #2C2C2C;
+    background-color: #EEEEEE;
     font-weight: bold;
 }
 
@@ -333,7 +354,7 @@ footer{
 .table-row .status, .table-row .subjects, .table-row .replies, .table-row .last-reply{
     padding: 5px;
     margin: 2px;
-    background-color: #131415;
+    background-color: #EEEEEE;
 }
 
 .table-row .status{
@@ -480,7 +501,49 @@ footer{
 
 
 
+.post-header {
+	font-size: 19px;
+	/* background: #f2f2f2; */
+	background: #eee;
+	padding: 0 10px;
+	display: flex;
+	align-items: center;
+	height: 50px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	flex-wrap: wrap;
+	position: relative;
+	overflow: hidden;
+}
 
+.post-header img{
+    border-radius: 100%;
+    margin-right: 10px;
+}
 
+.post-body {
+	font-size: 18px;
+	padding: 0 25px;
+	padding-right: 20px;
+	padding-top: 4px;
+	padding-bottom: 1px;
+	min-height: 42px;
+	line-height: 1.4;
+	word-wrap: break-word;
+	overflow: hidden;
+}
+
+.post-body div{
+    padding: 10px;
+    font-weight: bolder;
+box-shadow: 4px 6px #fff;
+cursor: pointer;
+float: right;
+}
+
+.header-post-content{
+    margin-top: 10px;
+    box-shadow: 1px 1px 1px  black;
+}
 
 
