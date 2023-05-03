@@ -57,7 +57,16 @@
 
         <!--Comment Area-->
         {% if post.closed == True %}
-        <div style="background-color:#fff;color:#000;font-weight:bolder;padding:20px;width:100%;"> This Topic Is Closed! </div>
+        <div style="border-style: solid;
+                    border-width:2px;
+                    border-color: red;
+                    margin-top:5px; 
+                    background-color:#fff;
+                    color:#000;
+                    font-weight:bolder;
+                    padding:10px;
+                    "
+        > This Topic Is Closed! </div>
         {% else %}
         {% if request.user.is_authenticated %}
         <form action="." method="post">
